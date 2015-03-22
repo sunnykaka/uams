@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<permissions>
+    <!--
+        相对于上一个文件, 角色管理的resource中,
+        删除了"相关联的操作", 并且从"配置角色权限"的required中移除了.
+
+        用户管理的resource中,
+        新增了"添加银行卡信息", "添加银行卡信息", 并且"新建用户"的required中新增了"添加银行卡信息"
+        新增了"查看用户信用记录", "查看用户财务信息", 并且"查询用户"的required中新增了"查看用户信用记录"
+
+     -->
+
+    <resource name="角色管理" unique-key="test1_role" iconCls="desktop-role" module="role-win" entryOperation="查询角色">
+        <operation name="查询角色" url="/role/list"/>
+        <operation name="新建角色" url="/role/add" required="保存角色,配置角色权限"/>
+        <operation name="删除角色" url="/role/deleteMore" required="查询角色"/>
+        <operation name="配置角色权限" url="/role/permission/get" required="查询角色,保存角色权限"/>
+        <operation name="保存角色" url="/role/save" configable="false"/>
+        <operation name="保存角色权限" url="/role/permission/save" configable="false"/>
+    </resource>
+    <resource name="用户管理" unique-key="test1_user" iconCls="desktop-account" module="account-win" entryOperation="查询用户">
+        <operation name="查询用户" url="/user/list" required="查看用户详细,查看用户信用记录"/>
+        <operation name="新建用户" url="/user/add" required="保存用户,查询用户,添加银行卡信息"/>
+        <operation name="编辑用户" url="/user/update" required="保存用户,查询用户"/>
+        <operation name="删除用户" url="/user/deleteMore" required="查询用户"/>
+        <operation name="保存用户" url="/user/save" configable="false"/>
+        <operation name="查看用户详细" url="/user/view" configable="false"/>
+
+        <operation name="添加银行卡信息" url="/user/bankcard/add" required="保存银行卡信息"/>
+        <operation name="保存银行卡信息" url="/user/bankcard/save" configable="false"/>
+
+        <operation name="查看用户信用记录" url="/user/view_credit" required="查看用户财务信息"/>
+        <operation name="查看用户财务信息" url="/user/view_bank" configable="false"/>
+    </resource>
+</permissions>

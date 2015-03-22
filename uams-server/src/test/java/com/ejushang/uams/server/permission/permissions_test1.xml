@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<permissions>
+    <resource name="角色管理" unique-key="test1_role" iconCls="desktop-role" module="role-win" entryOperation="查询角色">
+        <operation name="查询角色" url="/role/list"/>
+        <operation name="新建角色" url="/role/add" required="保存角色,配置角色权限"/>
+        <operation name="删除角色" url="/role/deleteMore" required="查询角色"/>
+        <operation name="配置角色权限" url="/role/permission/get" required="查询角色,保存角色权限,相关联的操作"/>
+        <operation name="保存角色" url="/role/save" configable="false"/>
+        <operation name="相关联的操作" url="/role/permission/link" configable="false"/>
+        <operation name="保存角色权限" url="/role/permission/save" configable="false"/>
+    </resource>
+    <resource name="用户管理" unique-key="test1_user" iconCls="desktop-account" module="account-win" entryOperation="查询用户">
+        <operation name="查询用户" url="/user/list" required="查看用户详细"/>
+        <operation name="新建用户" url="/user/add" required="保存用户,查询用户"/>
+        <operation name="编辑用户" url="/user/update" required="保存用户,查询用户"/>
+        <operation name="删除用户" url="/user/deleteMore" required="查询用户"/>
+        <operation name="保存用户" url="/user/save" configable="false"/>
+        <operation name="查看用户详细" url="/user/view" configable="false"/>
+    </resource>
+</permissions>

@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<permissions>
+    <resource name="角色管理" unique-key="role" iconCls="desktop-role" module="role-win" entryOperation="查询角色">
+        <operation name="查询角色" url="/role/list"/>
+        <operation name="新建角色" url="/role/add" required="保存角色,配置角色权限"/>
+        <operation name="删除角色" url="/role/deleteMore" required="查询角色"/>
+        <operation name="配置角色权限" url="/role/permission/get" required="查询角色,保存角色权限,相关联的操作"/>
+        <operation name="保存角色" url="/role/save" configable="false"/>
+        <operation name="相关联的操作" url="/role/permission/link" configable="false"/>
+        <operation name="保存角色权限" url="/role/permission/save" configable="false"/>
+    </resource>
+
+    <resource name="用户管理" unique-key="user" iconCls="desktop-account" module="account-win" entryOperation="查询用户">
+        <operation name="查询用户" url="/user/list" required="查看用户详细"/>
+        <operation name="新建用户" url="/user/add" required="保存用户,查询用户"/>
+        <operation name="编辑用户" url="/user/update" required="保存用户,查询用户"/>
+        <operation name="删除用户" url="/user/deleteMore" required="查询用户"/>
+        <operation name="保存用户" url="/user/save" configable="false"/>
+        <operation name="查看用户详细" url="/user/view" configable="false"/>
+    </resource>
+    <resource name="订单管理" unique-key="order" iconCls="desktop-order" module="order-win" entryOperation="查询订单">
+        <operation name="查询订单" url="/order/list" required="查询订单详细,订单界面"/>
+        <operation name="查询订单详细" url="/order/ItemList" configable="false"/>
+        <operation name="删除订单" url="/order/delete" required="查询订单"/>
+        <operation name="删除订单详细" url="/order/deleteItemList" required="查询订单"/>
+        <operation name="编辑订单" url="/order/updateByOrder" required="查询订单"/>
+        <operation name="编辑订单详细" url="/order/updateOrderItemByOrderItem" required="查询订单"/>
+        <operation name="批量更新订单" url="/order/updateStautsByOrder" required="查询订单"/>
+        <operation name="订单作废" url="/order/orderCancellation" required="查询订单"/>
+        <operation name="订单恢复" url="/order/orderRecover" required="查询订单"/>
+        <operation name="导入进销存" url="/order/orderConfirm" required="查询订单"/>
+        <operation name="加产品" url="/order/addGift" required="查找商品,查询订单,查询订单详细"/>
+        <operation name="订单界面" url="/order" configable="false" required="查看所有店铺,查询所有仓库" />
+        <operation name="订单拆分" url="/order/orderSeparate" required="查询订单"/>
+        <operation name="订单合并" url="/order/merge" required="查询订单"/>
+        <operation name="加订单和复制订单" url="/order/addOrder" required="查询订单"/>
+        <operation name="查看所有店铺" url="/order/allShop" configable="false"/>
+    </resource>
+    <resource name="发货管理" unique-key="invoice"  iconCls="desktop-shipment" module="shipment-win" entryOperation="查询发货">
+        <operation name="返回客服处理" url="/invoice/orderBackToWaitProcess" required="查询发货"/>
+        <operation name="打印物流单" url="/invoice/deliveryPrint" required="查询发货,获取loop代码"/>
+        <operation name="打印发货单" url="/invoice/orderPrint" required="查询发货"/>
+        <operation name="联想物流单号" url="/invoice/updateShipping" required="查询发货,修改快递单号"/>
+        <operation name="修改快递单号" url="/order/updateShippingNo" required="查询发货"/>
+        <operation name="确认打印" url="/invoice/orderAffirmPrint" required="查询发货"/>
+        <operation name="返回待处理" url="/invoice/orderBackToConfirm" required="查询发货"/>
+        <operation name="批量验货" url="/invoice/orderBatchExamine" required="查询发货"/>
+        <operation name="验货" url="/invoice/inspection" required="查询发货"/>
+        <operation name="返回已打印" url="/invoice/orderBackToPrint" required="查询发货"/>
+        <operation name="确认发货" url="/invoice/orderInvoice" required="查询发货"/>
+        <operation name="查询发货" url="/shipment" required="查询订单"/>
+    </resource>
+    <resource name="仓库管理" unique-key="repository" iconCls="desktop-warehouse" module="warehouse-win" entryOperation="查询仓库">
+        <operation name="查询仓库" url="/repository/list"/>
+        <operation name="添加仓库" url="/repository/add" required="查询仓库"/>
+        <operation name="删除仓库" url="/repository/delete" required="查询仓库"/>
+        <operation name="编辑仓库" url="/repository/update" required="查询仓库"/>
+    </resource>
+    <resource name="库存管理" unique-key="storage"  iconCls="desktop-stock" module="stock-win" entryOperation="查询库存">
+        <operation name="查询库存" url="/storage/list" required="库存界面"/>
+        <operation name="编辑库存" url="/storage/update" required="查询库存"/>
+        <operation name="库存界面" url="/stock" configable="false" required="查询所有品牌,查询所有类别,查询所有仓库" />
+        <operation name="查询所有仓库" url="/repository/findAll" configable="false"/>
+    </resource>
+    <resource name="系统日志" unique-key="log" iconCls="desktop-log" module="log-win" entryOperation="查询日志">
+        <operation name="查询日志" url="/log/list" required="查询日志详细,日志界面"/>
+        <operation name="查询日志详细" url="/log/itemList" configable="false"/>
+        <operation name="日志界面" url="/log" configable="false"/>
+    </resource>
+
+    <resource name="优惠活动管理" unique-key="giftBrand" iconCls="desktop-gift" module="gift-win" entryOperation="优惠活动查询">
+        <operation name="优惠活动查询" url="/giftBrand/list" required="商品优惠活动查询,活动商品信息,具体商品查询,查询所有品牌,优惠活动品牌赠品项"/>
+        <operation name="商品优惠活动查询" url="/giftProd/list" configable="false"/>
+        <operation name="活动商品信息" url="/giftProd/giftProdIdName" configable="false"/>
+        <operation name="具体商品查询" url="/giftProd/productDetail" configable="false"/>
+        <operation name="优惠活动新增" url="/giftBrand/add" required="优惠活动查询,查询所有品牌,商品优惠活动新增,优惠活动品牌赠品项"/>
+        <operation name="商品优惠活动新增" url="/giftProd/add" configable="false"/>
+        <operation name="优惠活动删除" url="/giftBrand/delete" required="优惠活动查询,商品优惠活动删除,优惠活动品牌赠品项"/>
+        <operation name="商品优惠活动删除" url="/giftProd/delete" configable="false"/>
+        <operation name="优惠活动更新" url="/giftBrand/update" required="优惠活动查询,商品优惠活动更新,优惠活动品牌赠品项"/>
+        <operation name="商品优惠活动更新" url="/giftProd/update" configable="false"/>
+        <operation name="优惠活动品牌赠品项" url="/giftBrandItem/detail" configable="false"/>
+    </resource>
+    <resource name="产品管理" unique-key="product" iconCls="desktop-product" module="product-win" entryOperation="查询产品">
+
+        <operation name="查询产品" url="/product/list" required="产品列表"/>
+        <operation name="添加产品" url="/product/add" required="查询产品,产品列表"/>
+        <operation name="编辑产品" url="/product/update" required="查询产品,产品列表"/>
+        <operation name="导入产品" url="/product/leadingIn" required="查询产品,产品列表,下载excel样板"/>
+        <operation name="下载excel样板" url="/templet/excelmode" configable="false"/>
+        <operation name="产品列表" url="/product" configable="false"/>
+        <operation name="查找商品" url="/product/findProduct" configable="false"/>
+        <operation name="删除产品" url="/product/delete"/>
+    </resource>
+    <resource name="同步记录" unique-key="orderfetch" iconCls="desktop-orderfetch" module="orderfetch-win" entryOperation="查询订单抓取">
+        <operation name="查询订单抓取" url="/orderfetch/list" />
+    </resource>
+
+    <resource name="套餐管理" unique-key="mealset" iconCls="desktop-mealset" module="mealset-win" entryOperation="查询套餐">
+        <operation name="添加套餐" url="/mealset/add" required="查询套餐"/>
+        <operation name="查询套餐" url="/mealset/list"/>
+        <operation name="删除套餐" url="/mealset/delete"/>
+        <operation name="编辑套餐" url="/mealset/update" required="查询套餐,通过ID获得套餐信息"/>
+        <operation name="通过ID获得套餐信息" url="/mealset/findMealsetById" configable="false"/>
+
+    </resource>
+    <resource name="品牌管理" unique-key="brand" iconCls="desktop-brand" module="brand-win" entryOperation="查询品牌">
+        <operation name="添加品牌" url="/brand/add" required="查询品牌"/>
+        <operation name="查询品牌" url="/brand/list"/>
+        <operation name="删除品牌" url="/brand/delete"/>
+        <operation name="编辑品牌" url="/brand/update" required="查询品牌"/>
+        <operation name="查询所有品牌" url="/brand/forList" configable="false"/>
+    </resource>
+    <resource name="产品分类管理" unique-key="prodCategory" iconCls="desktop-productCategory" module="productCategory-win" entryOperation="查询产品分类">
+        <operation name="添加产品分类" url="/prodCategory/add" required="查询产品分类"/>
+        <operation name="查询产品分类" url="/prodCategory/list"/>
+        <operation name="删除产品分类" url="/prodCategory/delete"/>
+        <operation name="编辑产品分类" url="/prodCategory/update" required="查询产品分类"/>
+        <operation name="查询所有类别" url="/prodCategory/forList" configable="false"/>
+    </resource>
+    <resource name="物流管理" unique-key="delivery" iconCls="desktop-logistics" module="logistics-win" entryOperation="查询物流">
+        <operation name="添加物流" url="/delivery/add" required="查询物流"/>
+        <operation name="查询物流" url="/delivery/list"/>
+        <operation name="编辑物流" url="/delivery/update" required="查询物流"/>
+        <operation name="设计物流" url="/delivery/updates" required="查询物流,物流跳转,获取loop代码"/>
+        <operation name="物流跳转" url="/logistics_design" configable="false"/>
+        <operation name="获取loop代码" url="/delivery/print_html" configable="false"/>
+    </resource>
+
+    <resource name="店铺管理" unique-key="shop" iconCls="desktop-shop" module="shop-win" entryOperation="店铺查询">
+        <operation name="店铺查询" url="/shop/list" required="店铺明细查询"/>
+        <operation name="店铺明细查询" url="/shop/detail" configable="false"/>
+        <operation name="店铺更新" url="/shop/update" required="店铺查询"/>
+        <operation name="店铺删除" url="/shop/delete" required="店铺查询"/>
+        <operation name="动态获取评分" url="/shop/dynamicGetScore" required="店铺查询"/>
+    </resource>
+
+    <!-- 供应链运维专员/主管/经理 -->
+    <resource name="订单预警" unique-key="warn" iconCls="desktop-warn" module="warn-win" entryOperation="物流预警界面">
+        <operation name="物流预警界面" url="/warn" configable="false" />
+        <operation name="订单未确认发货预警" url="/warn/nosend" required="物流预警界面"/>
+        <operation name="无物流扫描信息预警" url="/warn/nologistics" required="物流预警界面"/>
+        <operation name="物流长时间未更新预警" url="/warn/staytimeout" required="物流预警界面"/>
+        <operation name="快递未签收预警" url="/warn/nosign" required="物流预警界面"/>
+    </resource>
+
+    <resource name="系统配置" unique-key="config" iconCls="desktop-config" module="config-win" entryOperation="查询系统配置">
+        <operation name="查询系统配置" url="/conf/list"/>
+        <operation name="修改系统配置" url="/conf/updateById" required="查询系统配置"/>
+    </resource>
+
+    <resource name="模块管理" unique-key="operation" iconCls="desktop-module" module="module-win" entryOperation="查询模块">
+        <operation name="查询模块" url="/operation/list"/>
+    </resource>
+
+    <resource name="快递单查询" unique-key="operation" iconCls="desktop-logisticsquery" module="logisticsquery-win" entryOperation="快递查询">
+        <operation name="快递查询" url="/logistics/findByExpressNo" />
+        <operation name="快递详情查询" url="/logistics/detailByExpressNo" />
+        <operation name="导出快递信息" url="/logistics/exportByExpressNos" />
+    </resource>
+
+</permissions>
